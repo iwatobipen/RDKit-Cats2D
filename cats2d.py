@@ -64,15 +64,15 @@ def getPcoreGroups(mol, smarts):
          
             patt = Chem.MolFromSmarts(pattern)
             matched = False
-        for matchbase in mol.GetSubstructMatches(patt, uniquify=True):
-            for idx in matchbase:
-                if ret[idx] == '': ret[idx] = [label]
-                else: 
-                    tmp = ret[idx]
-                    tmp.append(label)
-                    ret[idx] = tmp
-            matched = True
-        if matched: break
+            for matchbase in mol.GetSubstructMatches(patt, uniquify=True):
+                for idx in matchbase:
+                    if ret[idx] == '': ret[idx] = [label]
+                    else: 
+                        tmp = ret[idx]
+                        tmp.append(label)
+                        ret[idx] = tmp
+                matched = True
+            if matched: break
     return ret
 
 def _getZeroMatrix(r,c):
